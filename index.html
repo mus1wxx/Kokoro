@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kokoro — комбо с доставкой по Бишкеку</title>
+<meta name="description" content="Хрустящие куриные крылья, картошка по-деревенски, кола и три соуса в одном комбо за 1400 сом. Заказ в Telegram-боте или в WhatsApp.">
+<meta name="theme-color" content="#F5B82E">
+<meta property="og:title" content="Kokoro">
+<meta property="og:description" content="Комбо за 1400 сом: 25 крыльев, 1 кг картошки, 1 л колы и 3 соуса. Доставка по Бишкеку.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F5B82E'/%3E%3Ctext x='32' y='46' font-size='40' font-weight='800' text-anchor='middle' fill='%2320140F' font-family='Arial,sans-serif'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Golos+Text:wght@400;500;700&display=swap">
+<style>
+:root {
+  --yellow: #F5B82E;
+  --ink: #20140F;
+  --paper: #FFFDF6;
+  --red: #D3321C;
+  --warm: #FFF8E7;
+  --muted: #E8D9B8;
+  --display: 'Unbounded', 'Golos Text', system-ui, sans-serif;
+  --body: 'Golos Text', 'Segoe UI', system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--ink); color: var(--ink); font-family: var(--body); }
+a { color: inherit; text-decoration: none; }
+a:hover { opacity: .86; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.on-dark :focus-visible, .cta :focus-visible { outline-color: #fff; }
+h1, h2, h3, p { margin: 0; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.btn { display: inline-block; min-height: 52px; padding: 16px 28px; border-radius: 999px; font-weight: 700; font-size: 18px; line-height: 1.2; }
+.btn-red { background: var(--red); color: #fff; }
+.btn-ink { background: var(--ink); color: var(--warm); }
+.btn-line { padding: 14px 26px; border: 2px solid var(--ink); }
+.btn-yellow { background: var(--yellow); color: var(--ink); min-height: 56px; padding: 18px 32px; }
+.btn-line-white { border: 2px solid #fff; color: #fff; min-height: 56px; padding: 16px 30px; }
+.display { font-family: var(--display); font-weight: 800; }
+
+/* Первый экран */
+.hero { background: var(--yellow); padding-bottom: 72px; overflow-x: clip; }
+.hero .wrap { display: flex; flex-direction: column; gap: 56px; }
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-top: 28px; }
+.logo { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: .04em; }
+.lang { display: flex; gap: 8px; }
+.lang button { min-width: 56px; min-height: 44px; padding: 10px 16px; border: 2px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: 700 15px/1 var(--body); letter-spacing: .06em; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--warm); }
+.hero-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 56px 48px; }
+.hero-copy { flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+.eyebrow { font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(32px, 5vw, 60px); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
+.lead { font-size: 19px; line-height: 1.55; max-width: 520px; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* Чек */
+.receipt-wrap { flex: 1 1 340px; min-width: 0; display: flex; justify-content: center; padding: 8px; }
+.receipt { width: 100%; max-width: 400px; background: var(--paper); border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); transform: rotate(-2deg); padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 18px; }
+.receipt-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.receipt-head .display { font-size: 20px; letter-spacing: .04em; }
+.receipt-tag { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-top: 2px dashed var(--ink); }
+.row span:first-child { font-size: 16px; line-height: 1.35; min-width: 0; }
+.row span:last-child { font-weight: 700; font-size: 16px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.total { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 16px; border-top: 3px solid var(--ink); }
+.total span:first-child { font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.total .display { font-size: 30px; font-variant-numeric: tabular-nums; }
+
+/* Состав */
+.combo { background: var(--ink); color: var(--warm); padding: 88px 0; }
+.combo .wrap, .how .wrap { display: flex; flex-direction: column; }
+.combo .wrap { gap: 44px; }
+.head { display: flex; flex-direction: column; gap: 12px; max-width: 640px; }
+h2 { font-family: var(--display); font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.head p { font-size: 18px; line-height: 1.5; }
+.combo .head p { color: var(--muted); }
+.cards { display: flex; flex-wrap: wrap; gap: 20px; }
+.card { flex: 1 1 240px; min-width: 0; background: var(--yellow); color: var(--ink); padding: 28px 24px; border-radius: 6px; display: flex; flex-direction: column; gap: 14px; }
+.card .big { font-family: var(--display); font-weight: 800; font-size: 54px; line-height: 1; letter-spacing: -.03em; }
+.card .label { font-size: 18px; line-height: 1.4; font-weight: 500; }
+
+/* Как заказать */
+.how { background: var(--paper); padding: 88px 0; }
+.how .wrap { gap: 48px; }
+.steps { display: flex; flex-wrap: wrap; gap: 40px 32px; }
+.step { flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.step .num { font-family: var(--display); font-weight: 800; font-size: 64px; line-height: 1; color: var(--red); }
+.step h3 { font-size: 22px; line-height: 1.25; font-weight: 700; }
+.step p { font-size: 17px; line-height: 1.55; }
+.wa-box { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; background: var(--yellow); padding: 32px; border-radius: 6px; }
+.wa-copy { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.wa-copy h3 { font-size: 22px; line-height: 1.25; font-weight: 700; }
+.wa-copy p { font-size: 17px; line-height: 1.55; }
+
+/* Призыв */
+.cta { background: var(--red); color: #fff; padding: 80px 0; }
+.cta .wrap { display: flex; flex-direction: column; gap: 40px; }
+.cta-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 40px; }
+.cta-top h2 { flex: 1 1 420px; min-width: 0; }
+.facts { display: flex; flex-wrap: wrap; gap: 12px 20px; padding-top: 28px; border-top: 2px solid rgba(255, 255, 255, .5); font-size: 16px; line-height: 1.5; }
+.facts b { margin-right: 8px; }
+.facts a { text-decoration: underline; }
+
+/* Подвал */
+footer { background: var(--ink); color: var(--muted); padding: 28px 0; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 15px; }
+footer .display { letter-spacing: .04em; color: var(--warm); }
+
+@media (max-width: 480px) {
+  .hero { padding-bottom: 56px; }
+  .combo, .how { padding: 64px 0; }
+  .cta { padding: 64px 0; }
+  .receipt { padding: 24px 20px 20px; }
+  .wa-box { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <header class="top">
+      <div class="logo">KOKORO</div>
+      <div class="lang" role="group" aria-label="Язык / Language / Тил">
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="kg" aria-pressed="false">KG</button>
+      </div>
+    </header>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow" data-i18n="eyebrow">Хрустящие крылья с доставкой</div>
+        <h1 data-i18n="h1">Крылья, картошка и три соуса в одном комбо</h1>
+        <p class="lead" data-i18n="lead">Комбо за 1400 сом. Заказ оформляется в Telegram-боте: выберите язык, отправьте номер телефона и адрес, подтвердите. Или просто напишите нам в WhatsApp.</p>
+        <div class="actions">
+          <a class="btn btn-red" href="https://t.me/kokorozakazy_bot" data-i18n="btnTg">Заказать в Telegram</a>
+          <a class="btn btn-ink" href="https://wa.me/996707581771" data-i18n="btnWa">Написать в WhatsApp</a>
+          <a class="btn btn-line" href="#combo" data-i18n="btnCombo">Что в комбо</a>
+        </div>
+      </div>
+
+      <div class="receipt-wrap">
+        <div class="receipt">
+          <div class="receipt-head">
+            <span class="display">KOKORO</span>
+            <span class="receipt-tag" data-i18n="rTag">Комбо</span>
+          </div>
+          <div>
+            <div class="row"><span data-i18n="r1">Куриные крылья, хрустящие</span><span data-i18n="q1">25 шт</span></div>
+            <div class="row"><span data-i18n="r2">Картошка по-деревенски</span><span data-i18n="q2">1 кг</span></div>
+            <div class="row"><span data-i18n="r3">Кока-кола</span><span data-i18n="q3">1 л</span></div>
+            <div class="row"><span data-i18n="r4">Фирменные соусы</span><span data-i18n="q4">3 × 200 г</span></div>
+          </div>
+          <div class="total">
+            <span data-i18n="rTotal">Итого</span>
+            <span class="display" data-i18n="rSum">1400 сом</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="combo on-dark" id="combo">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-i18n="comboH">Что входит в комбо</h2>
+      <p data-i18n="comboSub">Четыре позиции, одна цена: 1400 сом.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="big" data-i18n="c1big">25</div><div class="label" data-i18n="c1">хрустящих куриных крыльев</div></div>
+      <div class="card"><div class="big" data-i18n="c2big">1 кг</div><div class="label" data-i18n="c2">картошки по-деревенски</div></div>
+      <div class="card"><div class="big" data-i18n="c3big">1 л</div><div class="label" data-i18n="c3">кока-колы</div></div>
+      <div class="card"><div class="big" data-i18n="c4big">3×200</div><div class="label" data-i18n="c4">грамм: три фирменных соуса</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-i18n="howH">Как заказать</h2>
+      <p data-i18n="howSub">Два способа: бот в Telegram или сообщение в WhatsApp. Бот отвечает на русском, английском и кыргызском.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3 data-i18n="s1h">Откройте бота и выберите язык</h3><p data-i18n="s1p">Нажмите «Оформить заказ». Если хотите сначала посмотреть состав, нажмите «Узнать содержимое комбо».</p></div>
+      <div class="step"><div class="num">2</div><h3 data-i18n="s2h">Отправьте телефон и адрес</h3><p data-i18n="s2p">Номер можно передать кнопкой или написать вручную. Адрес укажите полностью: город, улица, дом и квартира.</p></div>
+      <div class="step"><div class="num">3</div><h3 data-i18n="s3h">Подтвердите и оплатите</h3><p data-i18n="s3p">Проверьте адрес, нажмите «Я готов оплатить». Заказ отправится на модерацию.</p></div>
+    </div>
+    <div class="wa-box">
+      <div class="wa-copy">
+        <h3 data-i18n="waH">Не пользуетесь Telegram? Напишите в WhatsApp</h3>
+        <p data-i18n="waP">Отправьте сообщение с именем, телефоном и адресом доставки: город, улица, дом, квартира. Кнопка откроет чат с готовым шаблоном, останется вписать свои данные.</p>
+      </div>
+      <a class="btn btn-ink" href="https://wa.me/996707581771" data-wa-template data-i18n="btnWa">Написать в WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="cta-top">
+      <h2 data-i18n="ctaH">Комбо за 1400 сом ждёт вас в Telegram и WhatsApp</h2>
+      <div class="actions">
+        <a class="btn btn-yellow" href="https://t.me/kokorozakazy_bot" data-i18n="ctaBot">Открыть бота</a>
+        <a class="btn btn-line-white" href="https://wa.me/996707581771" data-i18n="btnWa">Написать в WhatsApp</a>
+      </div>
+    </div>
+    <div class="facts">
+      <div><b data-i18n="lblHours">Часы работы:</b><span data-i18n="valHours">12:00 - 24:00</span></div>
+      <div><b data-i18n="lblZone">Зона доставки:</b><span data-i18n="valZone">по Бишкеку</span></div>
+      <div><b>WhatsApp:</b><a href="https://wa.me/996707581771">+996 707 581 771</a></div>
+      <div><b>Telegram:</b><a href="https://t.me/kokorozakazy_bot">@kokorozakazy_bot</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="display">KOKORO</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var WA = "https://wa.me/996707581771";
+  var I18N = {
+    ru: {
+      pageTitle: "Kokoro — комбо с доставкой по Бишкеку",
+      eyebrow: "Хрустящие крылья с доставкой",
+      h1: "Крылья, картошка и три соуса в одном комбо",
+      lead: "Комбо за 1400 сом. Заказ оформляется в Telegram-боте: выберите язык, отправьте номер телефона и адрес, подтвердите. Или просто напишите нам в WhatsApp.",
+      btnTg: "Заказать в Telegram",
+      btnWa: "Написать в WhatsApp",
+      btnCombo: "Что в комбо",
+      rTag: "Комбо",
+      r1: "Куриные крылья, хрустящие", q1: "25 шт",
+      r2: "Картошка по-деревенски", q2: "1 кг",
+      r3: "Кока-кола", q3: "1 л",
+      r4: "Фирменные соусы", q4: "3 × 200 г",
+      rTotal: "Итого", rSum: "1400 сом",
+      comboH: "Что входит в комбо",
+      comboSub: "Четыре позиции, одна цена: 1400 сом.",
+      c1big: "25", c1: "хрустящих куриных крыльев",
+      c2big: "1 кг", c2: "картошки по-деревенски",
+      c3big: "1 л", c3: "кока-колы",
+      c4big: "3×200", c4: "грамм: три фирменных соуса",
+      howH: "Как заказать",
+      howSub: "Два способа: бот в Telegram или сообщение в WhatsApp. Бот отвечает на русском, английском и кыргызском.",
+      s1h: "Откройте бота и выберите язык",
+      s1p: "Нажмите «Оформить заказ». Если хотите сначала посмотреть состав, нажмите «Узнать содержимое комбо».",
+      s2h: "Отправьте телефон и адрес",
+      s2p: "Номер можно передать кнопкой или написать вручную. Адрес укажите полностью: город, улица, дом и квартира.",
+      s3h: "Подтвердите и оплатите",
+      s3p: "Проверьте адрес, нажмите «Я готов оплатить». Заказ отправится на модерацию.",
+      waH: "Не пользуетесь Telegram? Напишите в WhatsApp",
+      waP: "Отправьте сообщение с именем, телефоном и адресом доставки: город, улица, дом, квартира. Кнопка откроет чат с готовым шаблоном, останется вписать свои данные.",
+      ctaH: "Комбо за 1400 сом ждёт вас в Telegram и WhatsApp",
+      ctaBot: "Открыть бота",
+      lblHours: "Часы работы:", valHours: "12:00 - 24:00",
+      lblZone: "Зона доставки:", valZone: "по Бишкеку",
+      waMsg: "Здравствуйте! Хочу заказать комбо за 1400 сом.\nИмя: \nТелефон: \nАдрес (город, улица, дом, квартира): "
+    },
+    en: {
+      pageTitle: "Kokoro — combo delivery in Bishkek",
+      eyebrow: "Crispy wings, delivered",
+      h1: "Wings, potatoes and three sauces in one combo",
+      lead: "The combo is 1400 som. Order in our Telegram bot: pick a language, send your phone number and address, then confirm. Or just message us on WhatsApp.",
+      btnTg: "Order on Telegram",
+      btnWa: "Message on WhatsApp",
+      btnCombo: "What's in the combo",
+      rTag: "Combo",
+      r1: "Crispy chicken wings", q1: "25 pcs",
+      r2: "Country-style potatoes", q2: "1 kg",
+      r3: "Coca-Cola", q3: "1 L",
+      r4: "Signature sauces", q4: "3 × 200 g",
+      rTotal: "Total", rSum: "1400 som",
+      comboH: "What's in the combo",
+      comboSub: "Four items, one price: 1400 som.",
+      c1big: "25", c1: "crispy chicken wings",
+      c2big: "1 kg", c2: "of country-style potatoes",
+      c3big: "1 L", c3: "of Coca-Cola",
+      c4big: "3×200", c4: "grams: three signature sauces",
+      howH: "How to order",
+      howSub: "Two ways: the Telegram bot or a WhatsApp message. The bot speaks Russian, English and Kyrgyz.",
+      s1h: "Open the bot and pick a language",
+      s1p: "Tap “Place order”. To see what is inside first, tap “View combo content”.",
+      s2h: "Send your phone and address",
+      s2p: "Share your number with the button or type it in. Give the full address: city, street, house and apartment.",
+      s3h: "Confirm and pay",
+      s3p: "Check the address and tap “I am ready to pay”. Your order goes to moderation.",
+      waH: "Not on Telegram? Message us on WhatsApp",
+      waP: "Send your name, phone and delivery address: city, street, house, apartment. The button opens a chat with a ready template, you only need to fill in your details.",
+      ctaH: "The 1400 som combo is waiting for you on Telegram and WhatsApp",
+      ctaBot: "Open the bot",
+      lblHours: "Opening hours:", valHours: "12:00 - 24:00",
+      lblZone: "Delivery area:", valZone: "Bishkek",
+      waMsg: "Hello! I would like to order the 1400 som combo.\nName: \nPhone: \nAddress (city, street, house, apartment): "
+    },
+    kg: {
+      pageTitle: "Kokoro — Бишкекте комбо жеткирүү",
+      eyebrow: "Кытырак канаттар жеткирүү менен",
+      h1: "Канаттар, картошка жана үч соус бир комбодо",
+      lead: "Комбо 1400 сом. Буйрутма Telegram ботунда берилет: тилди тандаңыз, телефон номериңизди жана дарегиңизди жөнөтүп, ырастаңыз. Же болбосо бизге WhatsApp аркылуу жазыңыз.",
+      btnTg: "Telegram аркылуу буйрутма берүү",
+      btnWa: "WhatsApp'ка жазуу",
+      btnCombo: "Комбонун курамы",
+      rTag: "Комбо",
+      r1: "Кытырак тооктун канаттары", q1: "25 даана",
+      r2: "Айылдык картошка", q2: "1 кг",
+      r3: "Кока-кола", q3: "1 л",
+      r4: "Фирмалык соустар", q4: "3 × 200 гр",
+      rTotal: "Жалпы", rSum: "1400 сом",
+      comboH: "Комбонун курамы",
+      comboSub: "Төрт позиция, бир баа: 1400 сом.",
+      c1big: "25", c1: "кытырак тооктун канаттары",
+      c2big: "1 кг", c2: "айылдык картошка",
+      c3big: "1 л", c3: "кока-кола",
+      c4big: "3×200", c4: "грамм: үч фирмалык соус",
+      howH: "Кантип буйрутма берүү керек",
+      howSub: "Эки жол бар: Telegram бот же WhatsApp билдирүүсү. Бот орусча, англисче жана кыргызча жооп берет.",
+      s1h: "Ботту ачып, тилди тандаңыз",
+      s1p: "«Буйрутма берүү» баскычын басыңыз. Адегенде курамын көргүңүз келсе, «Комбонун курамын билүү» баскычын басыңыз.",
+      s2h: "Телефон жана дарегиңизди жөнөтүңүз",
+      s2p: "Номериңизди баскыч менен бөлүшсөңүз болот, же өзүңүз жазсаңыз болот. Даректи толук жазыңыз: шаар, көчө, үй жана батир.",
+      s3h: "Ырастап, төлөңүз",
+      s3p: "Дарегиңизди текшерип, «Төлөөгө даярмын» баскычын басыңыз. Буйрутма модерацияга жөнөтүлөт.",
+      waH: "Telegram колдонбойсузбу? WhatsApp'ка жазыңыз",
+      waP: "Атыңызды, телефонуңузду жана жеткирүү дарегиңизди жөнөтүңүз: шаар, көчө, үй, батир. Баскыч даяр шаблон менен чатты ачат, өз маалыматыңызды гана жазып койсоңуз жетиштүү.",
+      ctaH: "1400 сомдук комбо сизди Telegram жана WhatsApp'та күтүп турат",
+      ctaBot: "Ботту ачуу",
+      lblHours: "Иш убактысы:", valHours: "12:00 - 24:00",
+      lblZone: "Жеткирүү аймагы:", valZone: "Бишкек боюнча",
+      waMsg: "Саламатсызбы! 1400 сомдук комбо буйрутма бергим келет.\nАты: \nТелефон: \nДареги (шаар, көчө, үй, батир): "
+    }
+  };
+  var HTML_LANG = { ru: "ru", en: "en", kg: "ky" };
+
+  function setLang(lang) {
+    var t = I18N[lang];
+    if (!t) { return; }
+    document.documentElement.lang = HTML_LANG[lang];
+    document.title = t.pageTitle;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i18n]"), function (el) {
+      var v = t[el.getAttribute("data-i18n")];
+      if (v !== undefined) { el.textContent = v; }
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-wa-template]"), function (a) {
+      a.href = WA + "?text=" + encodeURIComponent(t.waMsg);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === lang));
+    });
+    try { localStorage.setItem("kokoro-lang", lang); } catch (e) {}
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function (b) {
+    b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
+  });
+
+  var saved = "ru";
+  try { saved = localStorage.getItem("kokoro-lang") || "ru"; } catch (e) {}
+  setLang(I18N[saved] ? saved : "ru");
+})();
+</script>
+</body>
+</html>
